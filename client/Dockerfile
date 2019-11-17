@@ -9,7 +9,7 @@ RUN npm install
 # copy all source code from work directory to app folder in container
 COPY . .
 #Run npm run build for production enviornment
-RUN npm run builder
+RUN npm run build
 
 
 FROM nginx
