@@ -1,0 +1,27 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t srahman2/react-test -f ./client/Dockerfile.dev ./client
+  # docker build myother project
+
+script:
+  - docker run -e CI=true srahman2/react-test npm test -- --coverage
+  # docker run test for myother project
+
+after_success:
+  # build production dockr file
+  - docker build -t srahman2/multi-cont-client ./client
+  - docker build -t srahman2/multi-cont-nginx ./nginx
+  - docker build -t srahman2/multi-cont-server ./server
+  - docker build -t srahman2/multi-cont-worker ./worker
+  #Login to docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Take images and push them to docker hub
+  - docker push srahman2/multi-cont-client
+  - docker push srahman2/multi-cont-nginx
+  - docker push srahman2/multi-cont-server
+  - docker push srahman2/multi-cont-worker
