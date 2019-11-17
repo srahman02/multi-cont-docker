@@ -5,24 +5,28 @@
             "name":"client",
             "image":"srahman2/multi-cont-client",
             "hostname":"client",
+            "memory": 128,
             "essential": false
         },
         {
             "name":"server",
             "image":"srahman2/multi-cont-server",
             "hostname":"api",
+            "memory": 128,
             "essential": false
         },
         {
             "name":"worker",
             "image":"srahman2/multi-cont-worker",
             "hostname":"worker",
+            "memory": 128,
             "essential": false
         },
         {
             "name":"nginx",
             "image":"srahman2/multi-cont-nginx",
             "hostname":"nginx",
+            "memory": 128,
             "essential": true,
             "portMappings":[
                 {
