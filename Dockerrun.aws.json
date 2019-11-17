@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name":"client",
+            "image":"srahman2/multi-cont-client",
+            "hostname":"client",
+            "essential": false
+        },
+        {
+            "name":"server",
+            "image":"srahman2/multi-cont-server",
+            "hostname":"api",
+            "essential": false
+        },
+        {
+            "name":"worker",
+            "image":"srahman2/multi-cont-worker",
+            "hostname":"worker",
+            "essential": false
+        },
+        {
+            "name":"nginx",
+            "image":"srahman2/multi-cont-nginx",
+            "hostname":"nginx",
+            "essential": true,
+            "portMappings":[
+                {
+                "hostPort": 80,
+                "containerPort" : 80
+                }
+            ],
+            "links":["client","server"]
+        }
+    ]
+}
