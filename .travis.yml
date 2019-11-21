@@ -26,15 +26,15 @@ after_success:
   - docker push srahman2/multi-cont-server
   - docker push srahman2/multi-cont-worker
 
-deploy:
-  edge: true
-  provider: elasticbeanstalk
-  region: us-east-1
-  app: multi-cont-docker
-  env: MultiContDocker-env
-  bucket_name: elasticbeanstalk-us-east-1-666744425035
-  bucket_path: multi-docker
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
+# deploy:
+#   edge: true
+#   provider: elasticbeanstalk
+#   region: us-east-1
+#   app: multi-cont-docker
+#   env: MultiContDocker-env
+#   bucket_name: elasticbeanstalk-us-east-1-666744425035
+#   bucket_path: multi-docker
+#   on:
+#     branch: master
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
